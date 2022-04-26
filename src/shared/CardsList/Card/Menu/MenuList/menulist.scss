@@ -1,0 +1,37 @@
+@import '../../../../../variables.global.scss';
+
+.menuList {
+  padding: 0 20px;
+}
+
+.menuItem {
+  position: relative;
+  padding: 12px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  span {
+    color: $gray99;
+  }
+}
+.menuItem > svg + span {
+  margin-left: 7px;
+}
+
+.divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: $grayEC;
+}
+
+@media all and (min-width: 1024px) {
+  .menuItem {
+    svg[mobile] {
+      display: none;
+    }
+  }
+}

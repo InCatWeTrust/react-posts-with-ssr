@@ -34,6 +34,9 @@
   padding: 12px 23px;
   border-radius: 0 0 3px 3px;
   width: 100%;
+  font-size: 12px;
+  font-family: 'Roboto';
+  color: $gray66;
 }
 
 @media all and (min-width: 1024px) {
@@ -51,6 +54,16 @@
   .menuButton {
     align-self: center;
     transform: unset;
+  }
+
+  .dropdown {
+    top: 19px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .closeButton {
+    font-size: 14px;
   }
 }
 
