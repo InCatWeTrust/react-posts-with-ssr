@@ -1,19 +1,52 @@
 import React from "react"
 import { Dropdown } from "../../../Dropdown"
-import { MenuIcon } from "../../../icons"
 import styles from './menu.scss'
 import stylesList from './MenuList/menulist.scss'
 import { MenuList } from "./MenuList"
-import { CommentsIcon, ShareIcon, HideIcon, SaveIcon, ReportIcon } from '../../../icons'
 import { generateId } from "../../../../utils/js/generateRandomIndex"
 import { addEventListenerWithDispose } from "../../../../utils/js/addEventListenerWithDispose"
+import { Icon } from "../../../Icon"
+import { EIcons } from "../../../constants/enums"
 
 const LIST = [
-  {As: 'li' as const, text: 'Комментарии', className: stylesList.menuItem, divider: styles.divider, svg: <CommentsIcon />},
-  {As: 'li' as const, text: 'Поделиться', className: stylesList.menuItem, divider: styles.divider, svg: <ShareIcon />},
-  {As: 'li' as const, text: 'Скрыть', className: stylesList.menuItem, divider: styles.divider, svg: <HideIcon />},
-  {As: 'li' as const, text: 'Сохранить', className: stylesList.menuItem, divider: styles.divider, svg: <SaveIcon />},
-  {As: 'li' as const, text: 'Пожаловаться', className: stylesList.menuItem, svg: <ReportIcon />}
+  {
+    As: 'li' as const,
+    text: 'Комментарии',
+    className: stylesList.menuItem,
+    divider: styles.divider,
+    svg: <Icon name={EIcons.comments}
+  />},
+  {
+    As: 'li' as const,
+    text: 'Поделиться',
+    className: stylesList.menuItem,
+    divider: styles.divider,
+    svg: <Icon name={EIcons.share}
+    size={14}
+  />},
+  {
+    As: 'li' as const,
+    text: 'Скрыть',
+    className: stylesList.menuItem,
+    divider: styles.divider,
+    svg: <Icon name={EIcons.hide}
+    size={14}
+  />},
+  {
+    As: 'li' as const,
+    text: 'Сохранить',
+    className: stylesList.menuItem,
+    divider: styles.divider,
+    svg: <Icon name={EIcons.save}
+    size={14}
+  />},
+  {
+    As: 'li' as const,
+    text: 'Пожаловаться',
+    className: stylesList.menuItem,
+    svg: <Icon name={EIcons.report}
+    size={16}
+  />}
 ].map(generateId)
 
 export function Menu() {
@@ -43,7 +76,7 @@ export function Menu() {
       <Dropdown
         button={
           <button className={styles.menuButton}>
-            <MenuIcon />
+            <Icon name={EIcons.menu} size={20} />
           </button>
         }
       >
