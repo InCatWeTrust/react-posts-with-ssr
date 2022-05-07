@@ -14,39 +14,35 @@ const LIST = [
     text: 'Комментарии',
     className: stylesList.menuItem,
     divider: styles.divider,
-    svg: <Icon name={EIcons.comments}
-  />},
+    svg: <Icon name={EIcons.comments} />
+  },
   {
     As: 'li' as const,
     text: 'Поделиться',
     className: stylesList.menuItem,
     divider: styles.divider,
-    svg: <Icon name={EIcons.share}
-    size={14}
-  />},
+    svg: <Icon name={EIcons.share} size={14} />
+  },
   {
     As: 'li' as const,
     text: 'Скрыть',
     className: stylesList.menuItem,
     divider: styles.divider,
-    svg: <Icon name={EIcons.hide}
-    size={14}
-  />},
+    svg: <Icon name={EIcons.hide} size={14} />
+  },
   {
     As: 'li' as const,
     text: 'Сохранить',
     className: stylesList.menuItem,
     divider: styles.divider,
-    svg: <Icon name={EIcons.save}
-    size={14}
-  />},
+    svg: <Icon name={EIcons.save} size={14} />
+  },
   {
     As: 'li' as const,
     text: 'Пожаловаться',
     className: stylesList.menuItem,
-    svg: <Icon name={EIcons.report}
-    size={16}
-  />}
+    svg: <Icon name={EIcons.report} size={16} />
+  }
 ].map(generateId)
 
 export function Menu() {

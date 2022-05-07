@@ -12,10 +12,11 @@ export enum EColor {
 } 
 
 export enum EIcons {
-  comments = 'Comments',
-  menu = 'Menu',
-  hide = 'Hide',
-  report = 'Report',
-  save = 'Save',
-  share = 'Share'
+  comments = 'CommentsIcon',
+  menu = 'MenuIcon',
+  hide = 'HideIcon',
+  report = 'ReportIcon',
+  save = 'SaveIcon',
+  share = 'ShareIcon',
+  anon = 'AnonIcon'
 }

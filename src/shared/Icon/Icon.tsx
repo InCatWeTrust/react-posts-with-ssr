@@ -17,13 +17,13 @@ interface IIcons {
 export function Icon(props: IIconProps) {
   const {
     name,
-    size = 15
+    size
   } = props
 
-  const Icon = (Icons as IIcons)[name+'Icon']
+  const Icon = (Icons as IIcons)[name]
 
   const classes = classNames(
-    styles[`s${size}`]
+    {[styles[`s${size}`]]: size}
   )
 
   return (
