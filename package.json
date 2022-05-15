@@ -6,7 +6,7 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=Hyv0PulJkogDbf7czGdFUw node ./bin/dev.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=Hyv0PulJkogDbf7czGdFUw CLIENT_SECRET=AXWyMoShE7ZhfitL7fisJEBh8z6dsg node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "InCatWeTrust",
@@ -42,6 +42,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "express": "^4.17.3",
     "nodemon": "^2.0.15",

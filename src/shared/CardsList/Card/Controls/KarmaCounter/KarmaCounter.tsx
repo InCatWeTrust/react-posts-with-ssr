@@ -1,7 +1,11 @@
 import React from "react"
 import styles from './karmaCounter.scss'
 
-export function KarmaCounter() {
+interface IKarmaCounterProps {
+  upvotes: number
+}
+
+export function KarmaCounter({ upvotes }: IKarmaCounterProps) {
   return (
     <div className={styles.karmaCounter}>
       <button className={styles.up}>
@@ -10,7 +14,7 @@ export function KarmaCounter() {
         </svg>
       </button>
       <span className={styles.karmaValue}>
-        234
+        {upvotes}
       </span>
       <button className={styles.down}>
         <svg className={styles.down} width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -3,17 +3,36 @@ import styles from './textContent.scss'
 import { Title } from "./Title"
 import { UserLink } from "./UserLink"
 
-export function TextContent() {
+interface ITextContentProps {
+  author: string,
+  title: string,
+  avatar: string,
+  posted: number,
+  period: string
+}
+
+export function TextContent(props: ITextContentProps) {
+  const {
+    author,
+    title,
+    avatar,
+    posted,
+    period
+  } = props
+
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
-        <UserLink />
+        <UserLink
+          author={author}
+          thumbnail={avatar}
+        />
         <span className={styles.createdAt}>
           <span className={styles.publishedLabel}>опубликовано </span>
-          4 часа назад
+          {posted} {period} назад
         </span>
       </div>
-      <Title />
+      <Title title={title} />
     </div>
   )
 }

@@ -5,10 +5,14 @@ import { SaveButton } from "./SaveButton"
 import { ShareButton } from "./ShareButton"
 import styles from './controls.scss'
 
-export function Controls() {
+interface IControlsProps {
+  upvotes: number
+}
+
+export function Controls({ upvotes }: IControlsProps) {
   return (
     <div className={styles.controls}>
-      <KarmaCounter />
+      <KarmaCounter upvotes={upvotes} />
       <CommentsButton />
       <div className={styles.actions}>
         <ShareButton />
