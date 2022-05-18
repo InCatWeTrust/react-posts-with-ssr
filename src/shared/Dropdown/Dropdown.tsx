@@ -22,6 +22,9 @@ export function Dropdown ({ button, children, isOpen, onClose = NOOP, onOpen = N
     }
   }
 
+  const node = document.querySelector('#modal_root')
+  if (!node) return null
+
   return (
     <div className={styles.container}>
       <div onClick={handleOpen}>

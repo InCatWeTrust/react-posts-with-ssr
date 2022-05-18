@@ -47,6 +47,7 @@ const LIST = [
 
 export function Menu() {
   const [list, setList] = React.useState(LIST)
+
   const mobileIcons = ['Скрыть', 'Пожаловаться']
 
   React.useEffect(() => {
