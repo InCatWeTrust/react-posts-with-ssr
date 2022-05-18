@@ -1,88 +1,58 @@
-import React from "react"
+import React, { useRef, useState } from "react"
 import { Dropdown } from "../../../Dropdown"
 import styles from './menu.scss'
-import stylesList from './MenuList/menulist.scss'
-import { MenuList } from "./MenuList"
-import { generateId } from "../../../../utils/js/generateRandomIndex"
-import { addEventListenerWithDispose } from "../../../../utils/js/addEventListenerWithDispose"
 import { Icon } from "../../../Icon"
 import { EIcons } from "../../../constants/enums"
+import { MenuDropdown } from "./MenuDropdown/MenuDropdown"
+import { getCoords } from "../../../../utils/js/getCoords"
+import { addEventListenerWithDispose } from "../../../../utils/js/addEventListenerWithDispose"
 
-const LIST = [
-  {
-    As: 'li' as const,
-    text: 'Комментарии',
-    className: stylesList.menuItem,
-    divider: styles.divider,
-    svg: <Icon name={EIcons.comments} />
-  },
-  {
-    As: 'li' as const,
-    text: 'Поделиться',
-    className: stylesList.menuItem,
-    divider: styles.divider,
-    svg: <Icon name={EIcons.share} size={14} />
-  },
-  {
-    As: 'li' as const,
-    text: 'Скрыть',
-    className: stylesList.menuItem,
-    divider: styles.divider,
-    svg: <Icon name={EIcons.hide} size={14} />
-  },
-  {
-    As: 'li' as const,
-    text: 'Сохранить',
-    className: stylesList.menuItem,
-    divider: styles.divider,
-    svg: <Icon name={EIcons.save} size={14} />
-  },
-  {
-    As: 'li' as const,
-    text: 'Пожаловаться',
-    className: stylesList.menuItem,
-    svg: <Icon name={EIcons.report} size={16} />
-  }
-].map(generateId)
+interface IPosition {
+  top: number,
+  left: number
+}
 
 export function Menu() {
-  const [list, setList] = React.useState(LIST)
+  const [position, setPosition] = useState<IPosition>({
+    top: -1000,
+    left: -1000
+  })
 
-  const mobileIcons = ['Скрыть', 'Пожаловаться']
+  const ref = useRef<HTMLDivElement>(null)
+
+  function handleDropdownOpen () {
+    const coords = getCoords(ref.current)
+
+    if (coords?.top && coords?.left) {
+      setPosition({
+        top: coords?.top,
+        left: coords?.left
+      })
+    }
+  }
 
   React.useEffect(() => {
-    checkScreenSize(window.innerWidth)
-
-    const dispose = addEventListenerWithDispose(window, 'resize', () => checkScreenSize(window.innerWidth))
+    const dispose = addEventListenerWithDispose(window, 'resize', handleDropdownOpen)
 
     return () => {
      dispose()
     }
   }, [])
 
-  const checkScreenSize = (screenSize: number) => {
-    if (screenSize <= 1024) {
-      setList(LIST.filter((item) => ( mobileIcons.includes(item.text) )))
-    } else {
-      setList(LIST)
-    }
-  }
-
   return (
-    <div className={styles.menu}>
+    <div className={styles.menu} ref={ref}>
       <Dropdown
         button={
           <button className={styles.menuButton}>
             <Icon name={EIcons.menu} size={20} />
           </button>
         }
+        onOpen={handleDropdownOpen}
       >
-        <div className={styles.dropdown}>
-          <MenuList menuList={list} />
-          <button className={styles.closeButton}>
-            Закрыть
-          </button>
-        </div>
+        <MenuDropdown
+          top={position.top}
+          left={position.left}
+        />
       </Dropdown>
     </div>
   )

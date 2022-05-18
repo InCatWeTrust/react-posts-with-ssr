@@ -10,7 +10,15 @@ interface IDropdownProps {
   onClose?: () => void
 }
 
-export function Dropdown ({ button, children, isOpen, onClose = NOOP, onOpen = NOOP }: IDropdownProps) {
+export function Dropdown (props: IDropdownProps) {
+  const {
+    button,
+    children,
+    isOpen,
+    onClose = NOOP,
+    onOpen = NOOP
+  } = props
+
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen)
 
   React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen])
@@ -21,9 +29,6 @@ export function Dropdown ({ button, children, isOpen, onClose = NOOP, onOpen = N
       setIsDropdownOpen(!isDropdownOpen)
     }
   }
-
-  const node = document.querySelector('#modal_root')
-  if (!node) return null
 
   return (
     <div className={styles.container}>

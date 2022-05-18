@@ -1,0 +1,30 @@
+@import '../../../../../variables.global.scss';
+
+.dropdown {
+  position: absolute;
+  top: -1000px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  background-color: $white;
+  z-index: 2;
+}
+
+.closeButton {
+  background-color: $grayD9;
+  padding: 12px 23px;
+  border-radius: 0 0 3px 3px;
+  width: 100%;
+  font-size: 12px;
+  font-family: 'Roboto';
+  color: $gray66;
+}
+
+@media all and (min-width: 1024px) {
+  .dropdown {
+    top: -1000px;
+  }
+
+  .closeButton {
+    font-size: 14px;
+  }
+}
