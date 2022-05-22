@@ -1,8 +1,17 @@
-import React, { ChangeEvent, FormEvent, useContext, useRef, useState } from "react"
+import React, { ChangeEvent, FormEvent, useContext } from "react"
 import { commentContext } from "../context/commentContext"
 import styles from './commentForm.scss'
 
-export function CommentForm () {
+interface ICommentFormProps {
+  buttonText?: string,
+  defaultValue?: string
+}
+
+export function CommentForm (props: ICommentFormProps) {
+  const {
+    buttonText = 'Комментировать',
+  } = props
+
   const {
     value,
     onChange
@@ -19,8 +28,17 @@ export function CommentForm () {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <textarea className={styles.input} value={value} onChange={handleChange} />
-      <button type="submit" className={styles.button}>Комментировать</button>
+      <textarea
+        className={styles.input}
+        value={value}
+        onChange={handleChange}
+      />
+      <button
+        type="submit"
+        className={styles.button}
+      >
+        {buttonText}
+      </button>
     </form>
   )
 }

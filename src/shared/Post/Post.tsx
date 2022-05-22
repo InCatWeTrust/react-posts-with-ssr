@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import ReactDOM from 'react-dom'
 import { CommentForm } from "../CommentForm"
+import { Comments } from "../Comments"
 import styles from './post.scss'
 
 interface IPostProps {
@@ -15,6 +16,12 @@ export function Post (props: IPostProps) {
       if (event.target instanceof Node && !ref.current?.contains(event.target)) {
         props.onClose?.()
       }
+    }
+
+    if (ref.current) {
+      const y = window.pageYOffset + ref.current.getBoundingClientRect().y
+
+      window.scroll({ top: y, behavior: "smooth" })
     }
 
     document.addEventListener('pointerdown', handleClick)
@@ -38,6 +45,10 @@ export function Post (props: IPostProps) {
       </div>
 
       <CommentForm />
+
+      <div className={styles.break} />
+
+      <Comments />
     </div>
   ), node)
 }

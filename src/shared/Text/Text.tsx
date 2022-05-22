@@ -14,7 +14,8 @@ interface ITextProps {
   desktopSize?: TSizes,
   color?: EColor,
   bold?: boolean,
-  upperCase?: boolean
+  upperCase?: boolean,
+  lineHeight?: number
 }
 
 export function Text(props: ITextProps) {
@@ -27,11 +28,13 @@ export function Text(props: ITextProps) {
     size,
     mobileSize,
     desktopSize,
-    tabletSize
+    tabletSize,
+    lineHeight
   } = props
 
   const classes = classNames(
     styles[`s${size}`],
+    styles[`lh${lineHeight}`],
     { [styles.bold]: bold },
     { [styles.upperCase]: upperCase },
     { [styles[`m${mobileSize}`]]: mobileSize },

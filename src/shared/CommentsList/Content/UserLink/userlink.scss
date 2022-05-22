@@ -1,0 +1,31 @@
+@import '../../../../variables.global.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+.username {
+  color: $orange;
+  position: relative;
+  margin-right: 5px;
+  z-index: 1;
+}
+
+.published {
+  margin-right: 5px;
+  color: $gray99;
+}
+
+.league {
+  padding: 5px 12px;
+  font-weight: 500;
+  background-color: $grayD9;
+}

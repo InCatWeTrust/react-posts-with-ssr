@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import styles from './dropdown.scss'
 import { NOOP } from '../../utils/js/noop'
 
@@ -21,8 +21,23 @@ export function Dropdown (props: IDropdownProps) {
 
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen)
 
+  const ref = useRef<HTMLDivElement>(null)
+
   React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen])
   React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen])
+  React.useEffect(() => {
+    function handleClick (event: MouseEvent) {
+      if (event.target instanceof Node && !ref.current?.contains(event.target)) {
+        setIsDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener('pointerdown', handleClick)
+
+    return () => {
+      document.removeEventListener('pointerdown', handleClick)
+    }
+  }, [])
 
   const handleOpen = () => {
     if (isOpen === undefined) {
@@ -31,7 +46,7 @@ export function Dropdown (props: IDropdownProps) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={ref}>
       <div onClick={handleOpen}>
         {button}
       </div>

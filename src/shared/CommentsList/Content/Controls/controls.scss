@@ -1,0 +1,34 @@
+@import '../../../../variables.global.scss';
+
+.container {
+  display: flex;
+  margin-bottom: 10px;
+
+  button {
+    &:not(:last-child) {
+      margin-right: 27px;
+    }
+
+    span {
+      transition: color 200ms ease-in-out;
+    }
+
+    svg {
+      path {
+        transition: fill 200ms ease-in-out;
+      }
+    }
+  }
+
+  button:hover {
+    span {
+      color: $orange;
+    }
+
+    svg {
+      path {
+        fill: $orange;
+      }
+    }
+  }
+}
