@@ -1,43 +1,31 @@
-import React, { ChangeEvent, FormEvent, useContext } from "react"
-import { commentContext } from "../context/commentContext"
+import React, { ChangeEvent, FormEvent } from "react"
 import styles from './commentForm.scss'
 
 interface ICommentFormProps {
-  buttonText?: string,
-  defaultValue?: string
+  value: string,
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>) => void,
+  onSubmit: (event: FormEvent) => void
 }
 
 export function CommentForm (props: ICommentFormProps) {
   const {
-    buttonText = 'Комментировать',
+    value,
+    onChange,
+    onSubmit
   } = props
 
-  const {
-    value,
-    onChange
-  } = useContext(commentContext)
-
-  function handleChange (event: ChangeEvent<HTMLTextAreaElement>) {
-    onChange(event.target.value)
-  }
-  
-  function handleSubmit (event: FormEvent) {
-    event.preventDefault()
-    console.log(value)
-  }
-
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <textarea
         className={styles.input}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
       />
       <button
         type="submit"
         className={styles.button}
       >
-        {buttonText}
+        Комментировать
       </button>
     </form>
   )

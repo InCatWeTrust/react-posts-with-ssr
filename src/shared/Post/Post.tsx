@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import ReactDOM from 'react-dom'
-import { CommentForm } from "../CommentForm"
+import { CommentFormContainer } from "../CommentFormContainer"
 import { Comments } from "../Comments"
 import styles from './post.scss'
 
@@ -44,7 +44,7 @@ export function Post (props: IPostProps) {
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure quas deserunt obcaecati dicta eaque voluptatibus fugit, officia temporibus sint dolorem. Quasi quisquam illum ex libero dolorum dignissimos fugit ratione dicta.</p>
       </div>
 
-      <CommentForm />
+      <CommentFormContainer />
 
       <div className={styles.break} />
 
