@@ -4,13 +4,14 @@ import styles from './searchblock.scss'
 import { UserBlock } from "./UserBlock"
 
 export function SearchBlock () {
-  const { iconImg, name } = useContext(userContext)
+  const { data, loading } = useContext(userContext)
 
   return (
     <div className={styles.searchBlock}>
       <UserBlock
-        avatarSrc={iconImg}
-        username={name}
+        avatarSrc={data?.iconImg}
+        username={data?.name}
+        loading={loading}
       />
     </div>
   )

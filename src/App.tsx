@@ -7,15 +7,14 @@ import { CardsList } from "./shared/CardsList"
 import { UserContextProvider } from "./shared/context/userContext"
 import { PostsContextProvider } from "./shared/context/postsContext"
 import { useDispatch } from 'react-redux'
-import { updateToken } from "./tokenSlice"
+import { saveToken } from "./reducers/tokenSlice"
+import { AppDispatch } from "./store"
 
 export function AppComponent () {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   
   useEffect(() => {
-    if (window.__token__) {
-      dispatch(updateToken(window.__token__))
-    }
+    dispatch(saveToken())
   }, [])
 
   return (

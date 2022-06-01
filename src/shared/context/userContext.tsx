@@ -1,9 +1,9 @@
 import React from "react"
-import { useUserData } from "../../hooks/useUserData"
+import { IUserData, useUserData } from "../../hooks/useUserData"
 
 export interface IUserContextData {
-  name?: string
-  iconImg?: string
+  data?: IUserData,
+  loading?: boolean
 }
 
 interface IUserContextProviderProps {
@@ -13,7 +13,7 @@ interface IUserContextProviderProps {
 export const userContext = React.createContext<IUserContextData>({})
 
 export function UserContextProvider({ children }: IUserContextProviderProps) {
-  const [data] = useUserData()
+  const data = useUserData()
 
   return (
     <userContext.Provider value={data}>

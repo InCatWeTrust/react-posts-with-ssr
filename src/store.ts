@@ -1,12 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
-import commentFormReducer from './shared/CommentFormContainer/commentSlice'
-import tokenReducer from './tokenSlice'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { logger } from './middleware/logger'
+import commentFormReducer from './reducers/commentSlice'
+import tokenReducer from './reducers/tokenSlice'
+import meReducer from './reducers/meSlice'
 
 export const store = configureStore({
   reducer: {
     commentForm: commentFormReducer,
-    token: tokenReducer
-  }
+    token: tokenReducer,
+    me: meReducer
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  devTools: process.env.NODE_ENV !== 'production'
 })
 
 export type RootState = ReturnType<typeof store.getState>

@@ -52,7 +52,8 @@ module.exports = {
   plugins: [
     new DefinePlugin({
       'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
-      'process.env.CLIENT_SECRET': `'${process.env.CLIENT_SECRET}'`
+      'process.env.CLIENT_SECRET': `'${process.env.CLIENT_SECRET}'`,
+      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`
     })
   ]
 }
