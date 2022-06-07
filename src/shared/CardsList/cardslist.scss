@@ -1,3 +1,27 @@
+@import '../../variables.global.scss';
+
+.load {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.loadMore {
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  background-color: $black;
+  color: $white;
+  border: 1px solid $orange;
+  transition-property: background-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    background-color: rgba($black, 0.7);
+  }
+}
+
 @media all and (min-width: 1024px) {
   .cardsList {
     padding: 40px 0;

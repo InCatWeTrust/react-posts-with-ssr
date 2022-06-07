@@ -5,7 +5,6 @@ import { Header } from "./shared/Header"
 import { Content } from "./shared/Content"
 import { CardsList } from "./shared/CardsList"
 import { UserContextProvider } from "./shared/context/userContext"
-import { PostsContextProvider } from "./shared/context/postsContext"
 import { useDispatch } from 'react-redux'
 import { saveToken } from "./reducers/tokenSlice"
 import { AppDispatch } from "./store"
@@ -22,9 +21,7 @@ export function AppComponent () {
       <Layout>
         <Header />
         <Content>
-          <PostsContextProvider>
-            <CardsList />
-          </PostsContextProvider>
+          <CardsList />
         </Content>
       </Layout>
     </UserContextProvider>

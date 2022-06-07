@@ -18,12 +18,6 @@ export function Post (props: IPostProps) {
       }
     }
 
-    if (ref.current) {
-      const y = window.pageYOffset + ref.current.getBoundingClientRect().y
-
-      window.scroll({ top: y, behavior: "smooth" })
-    }
-
     document.addEventListener('pointerdown', handleClick)
 
     return () => {

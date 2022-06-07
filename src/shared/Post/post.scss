@@ -1,9 +1,10 @@
 @import '../../variables.global.scss';
 
 .modal {
-  position: absolute;
+  position: fixed;
   left: 50%;
-  top: 10%;
+  top: 5%;
+  bottom: 5%;
   transform: translateX(-50%);
   z-index: 1000;
   overflow-x: hidden;
