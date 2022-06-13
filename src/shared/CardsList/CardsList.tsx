@@ -1,6 +1,7 @@
 import axios from "axios"
 import React, { useEffect, useRef, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { removeToken } from "../../reducers/tokenSlice"
 import { RootState } from "../../store"
 import { Card } from "./Card"
 import styles from './cardslist.scss'
@@ -15,6 +16,8 @@ export function CardsList () {
   const token = useSelector<RootState>(state => state.token.value)
 
   const bottomOfList = useRef<HTMLDivElement>(null)
+
+  const dispatch = useDispatch()
 
   async function loadPosts () {
     if (token) {
@@ -34,7 +37,11 @@ export function CardsList () {
         setAfter(res.data.data.after)
         setData(prevChildren => prevChildren.concat(...res.data.data.children))
         setLoadCount(loadCount + 1)
-      } catch (err) {
+      } catch (err: any) {
+        if (err.response.status === 401) {
+          localStorage.removeItem('token')
+          dispatch(removeToken())
+        }
         setErrorLoading(String(err))
       } finally {
         setLoading(false)

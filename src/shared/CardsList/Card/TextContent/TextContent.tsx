@@ -8,7 +8,8 @@ interface ITextContentProps {
   title: string,
   avatar: string,
   posted: number,
-  period: string
+  period: string,
+  id: number | string
 }
 
 export function TextContent(props: ITextContentProps) {
@@ -17,7 +18,8 @@ export function TextContent(props: ITextContentProps) {
     title,
     avatar,
     posted,
-    period
+    period,
+    id
   } = props
 
   return (
@@ -32,7 +34,7 @@ export function TextContent(props: ITextContentProps) {
           {posted} {period} назад
         </span>
       </div>
-      <Title title={title} />
+      <Title title={title} id={id} />
     </div>
   )
 }

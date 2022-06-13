@@ -14,7 +14,8 @@ interface ICardData {
   title: string,
   thumbnail: string
   ups: number,
-  created: number
+  created: number,
+  id: string | number
 }
 
 export function Card(props: ICardProps) {
@@ -43,6 +44,7 @@ export function Card(props: ICardProps) {
         avatar={noImage}
         posted={postedAt}
         period={period}
+        id={card.id}
       />
       <Preview
         image={previewImg}

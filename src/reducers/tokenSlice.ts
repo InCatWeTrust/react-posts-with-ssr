@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export const saveToken = createAsyncThunk(
   'token/tokenFetchData',
@@ -35,7 +35,11 @@ const initialState: IToken = {
 export const tokenSlice = createSlice({
   name: 'token',
   initialState,
-  reducers: {},
+  reducers: {
+    removeToken: (state) => {
+      state.value = ''
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(saveToken.pending, (state) => {
@@ -54,6 +58,6 @@ export const tokenSlice = createSlice({
   }
 })
 
-export const {} = tokenSlice.actions
+export const { removeToken } = tokenSlice.actions
 
 export default tokenSlice.reducer
