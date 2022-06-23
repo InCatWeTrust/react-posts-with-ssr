@@ -5,10 +5,20 @@ import { App } from '../AppContainer'
 import { indexTemplate } from './indexTemplate'
 import axios from 'axios'
 import { StaticRouter } from 'react-router-dom'
+import compression from 'compression'
+import helmet from 'helmet'
 
 const PORT = process.env.PORT || 3000
+const IS_DEV = process.env.NODE_ENV !== 'production'
 
 const app = express()
+
+if (!IS_DEV) {
+  app.use(compression())
+  app.use(helmet({
+    contentSecurityPolicy: false
+  }))
+}
 
 app.use('/static', express.static('./dist/client'))
 
