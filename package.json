@@ -3,15 +3,31 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development CLIENT_ID=Hyv0PulJkogDbf7czGdFUw CLIENT_SECRET=AXWyMoShE7ZhfitL7fisJEBh8z6dsg node ./bin/dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/server/server.js"
   },
   "author": "InCatWeTrust",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "@types/react-router-dom": "^5.3.3",
+    "axios": "^0.27.2",
+    "classnames": "^2.3.1",
+    "express": "^4.17.3",
+    "formik": "^2.2.9",
+    "nodemon": "^2.0.15",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^5.3.3",
+    "redux": "^4.2.0",
     "@hot-loader/react-dom": "^17.0.2",
     "@types/classnames": "^2.3.1",
     "@types/enzyme": "^3.10.12",
@@ -40,19 +56,5 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-hot-middleware": "^2.25.1",
     "webpack-node-externals": "^3.0.0"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.1",
-    "@types/react-router-dom": "^5.3.3",
-    "axios": "^0.27.2",
-    "classnames": "^2.3.1",
-    "express": "^4.17.3",
-    "formik": "^2.2.9",
-    "nodemon": "^2.0.15",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-redux": "^8.0.2",
-    "react-router-dom": "^5.3.3",
-    "redux": "^4.2.0"
   }
 }
