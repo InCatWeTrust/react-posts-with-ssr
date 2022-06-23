@@ -16,7 +16,8 @@ const app = express()
 if (!IS_DEV) {
   app.use(compression())
   app.use(helmet({
-    contentSecurityPolicy: false
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false
   }))
 }
 
