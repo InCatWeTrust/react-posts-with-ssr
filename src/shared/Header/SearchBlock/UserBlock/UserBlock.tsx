@@ -6,6 +6,7 @@ import { Text } from "../../../Text"
 import styles from './userblock.scss'
 
 const CLIENT_ID = process.env.CLIENT_ID 
+const REDIRECT_URI = process.env.REDIRECT_URI
 
 interface IUserBlockProps {
   avatarSrc?: string,
@@ -16,7 +17,7 @@ interface IUserBlockProps {
 export function UserBlock({ avatarSrc, username, loading }: IUserBlockProps) {
   return (
     <a
-      href={`https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=identity read submit`}
+      href={`https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=code&state=random_string&redirect_uri=${REDIRECT_URI}&duration=permanent&scope=identity read submit`}
       className={styles.userBox}
     >
       <div className={styles.avatarBox}>

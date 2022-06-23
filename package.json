@@ -9,9 +9,9 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=Hyv0PulJkogDbf7czGdFUw CLIENT_SECRET=AXWyMoShE7ZhfitL7fisJEBh8z6dsg node ./bin/dev.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=Hyv0PulJkogDbf7czGdFUw CLIENT_SECRET=AXWyMoShE7ZhfitL7fisJEBh8z6dsg REDIRECT_URI=http://localhost:3000/auth node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./dist/server/server.js"
+    "start": "cross-env NODE_ENV=production CLIENT_ID=6h8xOEdxWTi0zRG9nMxmLA CLIENT_SECRET=QsH6PrxipN6bw_RwWPRVMCOi4SeV9A REDIRECT_URI=https://react-postred.herokuapp.com/auth node ./dist/server/server.js"
   },
   "author": "InCatWeTrust",
   "license": "ISC",
