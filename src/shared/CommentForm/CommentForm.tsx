@@ -1,19 +1,29 @@
 import { Formik } from "formik"
-import React, { ChangeEvent, FormEvent, useEffect, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { updateText } from "../../reducers/commentSlice"
-import { RootState } from "../../store"
+import React, { ChangeEvent } from "react"
+// import { useDispatch, useSelector } from "react-redux"
+import { atom, useRecoilState } from "recoil"
+// import { updateText } from "../../reducers/commentSlice"
+// import { RootState } from "../../store"
 import styles from './commentForm.scss'
 
 export function CommentForm () {
-  const comment = useSelector((state: RootState) => (
-    state.commentForm.value
-  ))
+  // const comment = useSelector((state: RootState) => (
+  //   state.commentForm.value
+  // ))
+  const commentData = atom({
+    key: 'comment',
+    default: 'Привет, Recoil!'
+  })
 
-  const dispatch = useDispatch()
+  const [comment, setComment] = useRecoilState(commentData)
 
+  // const dispatch = useDispatch()
+
+  // function handleChange (event: ChangeEvent<HTMLTextAreaElement>) {
+  //   dispatch(updateText(event.target.value))
+  // }
   function handleChange (event: ChangeEvent<HTMLTextAreaElement>) {
-    dispatch(updateText(event.target.value))
+    setComment(event.target.value)
   }
 
   return (

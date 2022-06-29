@@ -4,13 +4,16 @@ import { Provider } from "react-redux"
 import { AppComponent } from "./App"
 import { store } from './store'
 import { BrowserRouter } from "react-router-dom"
+import { RecoilRoot } from "recoil"
 
 export function AppContainer () {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <AppComponent />
-      </BrowserRouter>
+      <RecoilRoot>
+        <BrowserRouter>
+          <AppComponent />
+        </BrowserRouter>
+      </RecoilRoot>
     </Provider>
   )
 }

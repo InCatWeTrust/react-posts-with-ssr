@@ -11,3 +11,13 @@
   margin-top: 20px;
   background-color: #D9D9D9;
 }
+
+@media all and (max-width: 1024px) {
+  .container {
+    margin-right: 8px;
+
+    button {
+      padding: 0;
+    }
+  }
+}

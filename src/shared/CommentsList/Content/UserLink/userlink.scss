@@ -29,3 +29,10 @@
   font-weight: 500;
   background-color: $grayD9;
 }
+
+@media all and (max-width: 1024px) {
+  .container {
+    flex-wrap: wrap;
+    row-gap: 5px;
+  }
+}
